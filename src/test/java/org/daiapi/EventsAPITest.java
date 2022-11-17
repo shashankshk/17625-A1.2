@@ -7,16 +7,10 @@ import org.junit.jupiter.api.*;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import static io.restassured.RestAssured.*;
-import static io.restassured.module.jsv.JsonSchemaValidator.*;
 import static org.hamcrest.Matchers.equalTo;
-import static spark.Spark.awaitInitialization;
 
 import java.net.URI;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.List;
-import java.util.TimeZone;
 
 public class EventsAPITest {
 
@@ -28,16 +22,11 @@ public class EventsAPITest {
 
     }
 
-//    @BeforeEach
-//    public void setUp(){
-//        awaitInitialization();
-//    }
-
     // Test to check if events are fetched for a given date
     @Order(11)
     @Test
     public void getEventsForAGivenDate() throws JsonProcessingException {
-        // matches response with json in events.json file
+        // Preparing data for test
         List<EventModel> expectedAnswer = Constants.EVENT_LIST.stream().filter(event -> event.date.equals("11-16-2022")).toList();
         String jsonFormattedString = objectMapperObj.writeValueAsString(expectedAnswer);
         given()

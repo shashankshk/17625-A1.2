@@ -4,9 +4,7 @@ import org.daiapi.Models.EventModel;
 import org.daiapi.Util.Constants;
 import spark.Response;
 
-import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
-import java.time.format.DateTimeParseException;
 import java.util.List;
 
 public class EventsService {
@@ -22,7 +20,6 @@ public class EventsService {
             throw new RuntimeException("EventId passed is incorrect");
         }
         List<EventModel> filteredList = Constants.EVENT_LIST.stream().filter(event -> event.id.equals(eventId)).toList();
-        System.out.println(filteredList + eventId);
         if(filteredList.size() != 0) return filteredList.get(0);
         return null;
     }
@@ -41,9 +38,7 @@ public class EventsService {
         ) {
             return null;
         }
-        System.out.println("this called");
         int newEventIdInt = Integer.parseInt(Constants.EVENT_LIST.get(Constants.EVENT_LIST.size()-1).getId()) +1;
-        System.out.println(newEventIdInt);
         String eventId  = String.valueOf(newEventIdInt);
         eventObject.setId(eventId);
         Constants.EVENT_LIST.add(eventObject);
@@ -84,7 +79,6 @@ public class EventsService {
      * @return 1 if successfully deleted else -1
      */
     public  int deleteEvent(String eventId) {
-        System.out.println(eventId + "delete");
         if(eventId == null) {
             throw new RuntimeException("Event id passed is incorrect");
         }
@@ -111,12 +105,6 @@ public class EventsService {
         if(date == null) {
             throw new RuntimeException("Date passed is incorrect");
         }
-//        try {
-//            LocalDate.parse(date, dateFormatter);
-//        } catch (DateTimeParseException e) {
-//            throw new RuntimeException("Date passed is incorrect");
-//        }
-        System.out.println("called this" + date);
         List<EventModel> eventsList = Constants.EVENT_LIST.stream().filter(event -> event.getEventDate().equals(date)).toList();
         return eventsList;
     }

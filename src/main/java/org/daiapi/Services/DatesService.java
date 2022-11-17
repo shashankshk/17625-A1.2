@@ -1,8 +1,6 @@
 package org.daiapi.Services;
 
 import org.daiapi.Util.Constants;
-import spark.Request;
-
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.*;
@@ -21,7 +19,7 @@ public class DatesService {
      * @return current date
      */
     public static String getCurrentDate(String formatRequired, String timeZoneRequired){
-        System.out.println(formatRequired+timeZoneRequired);
+        // Handling null and incorrect inputs
         if(formatRequired == null || !Constants.supportedDateFormats.contains(formatRequired)) {
             throw new RuntimeException("Date format is unsupported");
         }
@@ -42,7 +40,7 @@ public class DatesService {
      * @return current day
      */
     public static String getCurrentDay(String formatRequired, String timeZoneRequired){
-        System.out.println(formatRequired+timeZoneRequired);
+        // Handling null and incorrect inputs
         if(formatRequired == null || !Constants.supportedDayFormats.contains(formatRequired)) {
             throw new RuntimeException("Day format is unsupported");
         }
@@ -63,7 +61,7 @@ public class DatesService {
      * @return current month
      */
     public static String getCurrentMonth(String formatRequired, String timeZoneRequired){
-        System.out.println(formatRequired+timeZoneRequired);
+        // Handling null and incorrect inputs
         if(formatRequired == null || !Constants.supportedMonthFormats.contains(formatRequired)) {
             throw new RuntimeException("Day format is unsupported");
         }
@@ -84,7 +82,7 @@ public class DatesService {
      * @return current year
      */
     public static String getCurrentYear(String formatRequired, String timeZoneRequired){
-        System.out.println(formatRequired+timeZoneRequired);
+        // Handling null and incorrect inputs
         if(formatRequired == null || !Constants.supportedYearFormats.contains(formatRequired)) {
             throw new RuntimeException("Day format is unsupported");
         }

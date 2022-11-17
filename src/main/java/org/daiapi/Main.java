@@ -2,20 +2,23 @@ package org.daiapi;
 import org.daiapi.Controllers.DatesController.DatesController;
 import org.daiapi.Controllers.EventController.EventsController;
 import org.daiapi.Controllers.TimezoneController.TimezoneController;
+import org.daiapi.Util.Constants;
 import spark.Service;
 
 import static spark.Service.ignite;
-import static spark.Spark.*;
-public class Main {
 
+public class Main {
     public static void main(String[] args) {
         // Starting server
+
         runMainServer(4567);
     }
 
     /**
      * Method to ignite the spark server
+     *
      * @param port on which the server will be started
+     * @param data
      */
     public static void runMainServer(int port) {
         Service http = ignite()

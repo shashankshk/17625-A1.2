@@ -1,29 +1,19 @@
 package org.daiapi;
-import com.google.common.collect.Lists;
 import io.restassured.http.ContentType;
-import org.daiapi.Models.DateModel;
-import org.daiapi.Models.EventModel;
-import org.daiapi.Util.Constants;
 import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
+
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.core.JsonProcessingException;
-//import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 
 import static io.restassured.RestAssured.*;
-
 import static org.hamcrest.Matchers.equalTo;
-import static spark.Spark.awaitInitialization;
-
 import java.net.URI;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.List;
 import java.util.TimeZone;
-//import spark.Spark.awaitInitialization;
 
 public class DatesAPITest {
 
@@ -36,10 +26,10 @@ public class DatesAPITest {
     }
 
     // Test to check if current date is retrieved successfully or not
-
     @Order(1)
     @Test
     public void CurrentDateController() throws JsonProcessingException {
+        // preparing test data
         DateFormat requiredDateFormat = new SimpleDateFormat("MM-dd-yyyy");
         requiredDateFormat.setTimeZone(TimeZone.getTimeZone("America/New_York"));
         String currentDate = requiredDateFormat.format(new Date());
@@ -75,6 +65,7 @@ public class DatesAPITest {
     @Order(3)
     @Test
     public void CurrentDayController() throws JsonProcessingException {
+        // Preparing data for test
         DateFormat requiredDateFormat = new SimpleDateFormat("dd");
         requiredDateFormat.setTimeZone(TimeZone.getTimeZone("America/New_York"));
         String currentDay = requiredDateFormat.format(new Date());
@@ -110,6 +101,7 @@ public class DatesAPITest {
     @Order(5)
     @Test
     public void CurrentMonthController() throws JsonProcessingException {
+        // Preparing test data
         DateFormat requiredDateFormat = new SimpleDateFormat("MM");
         requiredDateFormat.setTimeZone(TimeZone.getTimeZone("America/New_York"));
         String currentMonth = requiredDateFormat.format(new Date());
@@ -145,6 +137,7 @@ public class DatesAPITest {
     @Order(7)
     @Test
     public void getCurrentYear() throws JsonProcessingException {
+        // Preparing data for test
         DateFormat requiredDateFormat = new SimpleDateFormat("yy");
         requiredDateFormat.setTimeZone(TimeZone.getTimeZone("America/New_York"));
         String currentYear = requiredDateFormat.format(new Date());
